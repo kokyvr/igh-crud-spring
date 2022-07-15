@@ -36,6 +36,7 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 			productoDao.save(producto);
 			rpta = 1;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			rpta = 0;
 		}
 		return rpta;

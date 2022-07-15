@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -28,9 +30,14 @@ public class Producto implements Serializable{
 	@Column(name = "nombre_producto")
 	private String nombreProducto;
 	
+	@NotNull
 	private Integer stock;
 	
+	@NotNull
 	private Double precio;
+	
+	@NotEmpty
+	private String marca;
 	
 	@Column(name = "estado_producto")
 	private String estadoProducto;
