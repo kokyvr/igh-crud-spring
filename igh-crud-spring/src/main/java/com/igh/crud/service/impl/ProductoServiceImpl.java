@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ import com.igh.crud.util.Generador;
 @Service
 public class ProductoServiceImpl implements ProductoService, MapperPageable<Producto> {
 
-	private String carpeta = "c:/producto/imagenes/";
+	@Value("${carpeta}")
+	private String carpeta;
 	
 	@Autowired
 	private ProductoRepository productoDao;

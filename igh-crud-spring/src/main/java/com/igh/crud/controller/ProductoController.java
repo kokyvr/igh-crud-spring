@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,8 @@ public class ProductoController {
 	
 	private String nombreArchivo;
 	
-	private String carpeta = "c:/producto/imagenes/";
+	@Value("${carpeta}")
+	private String carpeta;
 	
 	
 	@PostMapping("/imagen")

@@ -2,6 +2,7 @@ package com.igh.crud.config;
 
 import java.io.File;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Loader {
 
-	
-	private String carpeta = "c:/producto/imagenes/";
+	@Value("${carpeta}")
+	private String carpeta;
 	
 	@EventListener
 	public void appReady(ApplicationReadyEvent event) {
