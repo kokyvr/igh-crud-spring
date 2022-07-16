@@ -12,6 +12,8 @@ public interface ProductoService {
 	
 	public int deleteById(Integer id);
 	
+	public int setProductoInactivo(Integer id);
+	
 	public Map<String,Object> findAll(int page,int size);
 	
 	public Producto findById(Integer id);
@@ -19,6 +21,8 @@ public interface ProductoService {
 	public Producto findByNombreProducto(String nombreProducto);
 	
 	public int actualizarImagen(String nombreArchivo,Integer id);
+	
+
 	
 	
 }

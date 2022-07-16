@@ -154,6 +154,19 @@ public class ProductoController {
 		
 		return new ResponseEntity<Integer>(rpta,HttpStatus.OK);
 	}
+	@DeleteMapping(path = "setInactivo/{id}/")
+	public ResponseEntity<Integer> setInactivo(@PathVariable Integer id){
+		int rpta = 0;
+		try {
+			
+			rpta = productoService.setProductoInactivo(id);
+		} catch (Exception e) {
+			return new ResponseEntity<Integer>(rpta,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<Integer>(rpta,HttpStatus.OK);
+	}
+	
 	
 	
 	@GetMapping(value = "/getAll")

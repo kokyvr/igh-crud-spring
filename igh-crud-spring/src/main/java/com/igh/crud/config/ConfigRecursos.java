@@ -10,6 +10,6 @@ public class ConfigRecursos implements WebMvcConfigurer{
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/imagenes/**").addResourceLocations("file:/productos/imagenes/");
+		registry.addResourceHandler("/imagenes/**").addResourceLocations("file:/producto/imagenes/");
 	}
 }

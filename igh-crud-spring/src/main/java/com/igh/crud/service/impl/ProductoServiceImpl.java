@@ -65,17 +65,18 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 	@Override
 	public int deleteById(Integer id) {
 		int rpta = 0;
-		boolean existe = productoDao.existsById(id);
-		if(!existe) {
+		Producto producto= productoDao.findById(id).orElse(null);
+		if(producto ==null) {
 			return rpta;
 		}
 		try {
 			productoDao.deleteById(id);
+			Generador.deleteFile(carpeta + producto.getNombreArchivo());
 			rpta = 1;
 		} catch (Exception e) {
 			rpta = 0;
 		}
-		return 0;
+		return rpta;
 	}
 
 	@Override
@@ -133,6 +134,24 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 			rpta = 1;
 		} catch (Exception e) {
 			rpta = 0;
+		}
+		
+		return rpta;
+	}
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	@Override
+	public int setProductoInactivo(Integer id) {
+		int rpta =0;
+		Producto producto = productoDao.findById(id).orElse(null);
+		if(producto ==null) {
+			return rpta;
+		}
+		
+		try {
+			producto.setEstadoProducto(Estado.INACTIVO.toString());
+			rpta = 1;
+		} catch (Exception e) {
+			rpta=0;
 		}
 		
 		return rpta;
