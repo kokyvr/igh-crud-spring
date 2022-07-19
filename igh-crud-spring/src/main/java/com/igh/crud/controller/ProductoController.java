@@ -149,6 +149,7 @@ public class ProductoController {
 			
 			rpta = productoService.deleteById(id);
 		} catch (Exception e) {
+			rpta=0;
 			return new ResponseEntity<Integer>(rpta,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		

@@ -18,6 +18,9 @@ import com.igh.crud.service.MapperPageable;
 import com.igh.crud.service.ProductoService;
 import com.igh.crud.util.Generador;
 
+import lombok.AllArgsConstructor;
+
+
 @Service
 public class ProductoServiceImpl implements ProductoService, MapperPageable<Producto> {
 
@@ -26,6 +29,7 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 	
 	@Autowired
 	private ProductoRepository productoDao;
+
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	@Override
