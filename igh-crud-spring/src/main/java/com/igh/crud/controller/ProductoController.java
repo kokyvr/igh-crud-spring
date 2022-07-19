@@ -3,6 +3,7 @@ package com.igh.crud.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -208,5 +209,24 @@ public class ProductoController {
 		
 		return new ResponseEntity<Producto>(producto,HttpStatus.OK);
 	}
+	
+	
+	@GetMapping(value = "/productos")
+	public ResponseEntity<List<Producto>> getAll(){
+		List<Producto> map= null;
+		try {
+			map = productoService.productos();
+			if(map.isEmpty())
+				return new ResponseEntity<List<Producto>>(map,HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+
+			return new ResponseEntity<List<Producto>>(map,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		return new  ResponseEntity<List<Producto>>(map,HttpStatus.OK);
+		
+	}
+	
 	
 }

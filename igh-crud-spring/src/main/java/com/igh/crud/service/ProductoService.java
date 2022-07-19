@@ -1,5 +1,6 @@
 package com.igh.crud.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.igh.crud.model.Producto;
@@ -22,7 +23,8 @@ public interface ProductoService {
 	
 	public int actualizarImagen(String nombreArchivo,Integer id);
 	
-
+	
+	public List<Producto> productos();
 	
 	
 }

@@ -1,6 +1,7 @@
 package com.igh.crud.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,6 @@ import com.igh.crud.repository.ProductoRepository;
 import com.igh.crud.service.MapperPageable;
 import com.igh.crud.service.ProductoService;
 import com.igh.crud.util.Generador;
-
-import lombok.AllArgsConstructor;
 
 
 @Service
@@ -159,6 +158,11 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 		}
 		
 		return rpta;
+	}
+	@Override
+	public List<Producto> productos() {
+		// TODO Auto-generated method stub
+		return productoDao.findAll();
 	}
 
 }
