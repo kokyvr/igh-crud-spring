@@ -69,8 +69,8 @@ public class ProductoController {
 	}
 	
 	
-	@PutMapping("/actualizarImagen")
-	public ResponseEntity<Integer> actualizarImagen(@RequestParam("file") MultipartFile mp3,@RequestParam(required = true)Integer id) {
+	@PutMapping("/actualizarImagen/{id}")
+	public ResponseEntity<Integer> actualizarImagen(@RequestParam("file") MultipartFile mp3,@PathVariable(required = true)Integer id) {
 		File file;
 		int rpta = 0;
 		if(mp3.isEmpty()) {
