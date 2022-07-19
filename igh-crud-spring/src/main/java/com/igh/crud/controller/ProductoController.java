@@ -108,24 +108,24 @@ public class ProductoController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Integer> insertar(@RequestBody Producto producto){
-		int rpta = 0;
+	public ResponseEntity<Producto> insertar(@RequestBody Producto producto){
+		Producto produDB = null;
 		try {
 			if(this.nombreArchivo ==null) {
-				return new ResponseEntity<Integer>(rpta,HttpStatus.INTERNAL_SERVER_ERROR);
+				return new ResponseEntity<Producto>(produDB,HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
 			producto.setNombreArchivo(nombreArchivo);
-			rpta = productoService.insertar(producto);
+			produDB = productoService.insertar(producto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			Generador.deleteFile(carpeta + nombreArchivo);
-			return new ResponseEntity<Integer>(rpta,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Producto>(produDB,HttpStatus.INTERNAL_SERVER_ERROR);
 		}finally {
 			this.nombreArchivo = null;
 		}
 		
-		return new ResponseEntity<Integer>(rpta,HttpStatus.OK);
+		return new ResponseEntity<Producto>(produDB,HttpStatus.OK);
 	}
 	
 	

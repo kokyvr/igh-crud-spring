@@ -7,7 +7,7 @@ import com.igh.crud.model.Producto;
 
 public interface ProductoService {
 
-	public int insertar(Producto producto);
+	public Producto insertar(Producto producto);
 	
 	public int actualizar(Producto producto,Integer id);
 	

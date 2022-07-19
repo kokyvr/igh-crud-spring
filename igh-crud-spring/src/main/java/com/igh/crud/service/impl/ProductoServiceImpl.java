@@ -32,17 +32,18 @@ public class ProductoServiceImpl implements ProductoService, MapperPageable<Prod
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	@Override
-	public int insertar(Producto producto) {
-		int rpta = 0;
+	public Producto insertar(Producto producto) {
+
 		try {
 			producto.setEstadoProducto(Estado.ACTIVO.toString());
 			productoDao.save(producto);
-			rpta = 1;
+			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			rpta = 0;
+			producto = null;
 		}
-		return rpta;
+		return producto;
 	}
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	@Override
